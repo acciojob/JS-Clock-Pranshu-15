@@ -11,12 +11,12 @@ function setDate() {
   const minutes = now.getMinutes();
   const minutesDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
   const minuteHand = document.querySelector('.min-hand');
-  minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+  minuteHand.style.transform = `rotate(${minutesDegrees.toFixed(6)}deg)`;
 
   const hours = now.getHours();
   const hoursDegrees = ((hours / 12) * 360) + ((minutes / 60) * 30) + 90;
   const hourHand = document.querySelector('.hour-hand');
-  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+  hourHand.style.transform = `rotate(${hoursDegrees.toFixed(6)}deg)`;
 }
 
 // Fix for transition issues when hand moves from 59 to 0 second/minute/hour
