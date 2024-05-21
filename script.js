@@ -1,5 +1,19 @@
 // script.js
 
+Let's address each of these steps:
+
+    Check the calculation of 'minutesDegrees': The formula seems correct, but let's double-check it. We calculate 'minutesDegrees' as ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90. This calculates the degrees for the minute hand based on both minutes and seconds, converting them into a rotational value.
+
+    Check the application of the transform: The transform property is applied to the minute hand using minuteHand.style.transform = rotate(${minutesDegrees.toFixed(6)}deg). This should correctly rotate the minute hand based on the calculated 'minutesDegrees'. However, given the precision issue reported in your test, we might consider reducing the number of decimal places to ensure consistency.
+
+    Check the timing of the test: Timing issues could indeed cause discrepancies in the test results. Ensure that the test checks the value of the 'transform' property after the rotation has been applied. You can adjust the timing by waiting for a short period after setting the rotation before asserting the transform value.
+
+    Check the initial rotation: The initial rotation of the hands is set to 90 degrees in the CSS. This ensures that the hands point upwards initially. Confirm that this initial rotation is correctly applied and does not interfere with subsequent rotations.
+
+Let's make some adjustments to the code:
+
+javascript
+
 function setDate() {
   const now = new Date();
 
@@ -51,7 +65,6 @@ function handleHandTransition() {
 
 setInterval(() => {
   setDate();
-  handleHandTransition();
 }, 1000);
 
 setDate();
